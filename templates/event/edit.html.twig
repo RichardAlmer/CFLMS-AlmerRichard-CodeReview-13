@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<style>
+    body{
+        background-color: lightgray;
+    }
+    .container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    h2{
+        text-align: center;
+        margin: 1em 0;
+    }
+    #form{
+        width: 80vw;
+        text-align: center;
+    }
+</style>
+<div class="container">
+    <h2 class="page-header">Edit Event</h2>
+    <div id="form">
+        {{form_start(form)}}
+        {{form_widget(form)}}
+        {{form_end(form)}}
+    </div>
+</div>
+{% endblock %}

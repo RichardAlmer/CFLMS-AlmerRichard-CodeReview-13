@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<style>
+    body{
+        background-color: lightgrey;
+    }
+    h2{
+        text-align: center;
+        margin: 1.5em 0;
+    }
+    #content{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas: 'img info' 'desc desc';
+    }
+    #img{
+        grid-area: img;
+        justify-self: center;
+        align-self: center;
+    }
+    #infos{
+        grid-area: info;
+    }
+    #desc{
+        grid-area: desc;
+        justify-self: center;
+        align-self: center;
+    }
+    @media screen and (max-width: 850px){
+        #content{
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            grid-template-areas: 'img' 'info' 'desc';
+        }
+        #infos{
+            justify-self: center;
+            align-self: center;
+        }
+    }
+</style>
+<div class="container">
+    <h2 class="page-header">{{event.name}}</h2>
+    <div id="content">
+        <img id="img" src="{{event.image}}" alt="{{event.name}}" width="300px">
+        <div id="infos">
+            <p><b>Type: </b>{{event.type}}</p>
+            <p><b>Start Date: </b>{{event.start|date('F j, Y; g:i a')}}</p>
+            <p><b>Location: </b>{{event.country}}, {{event.address}}</p>
+            <p><b>Capacity: </b>{{event.capacity}}</p>
+            <p><a href="{{event.url}}">Homepage</a></p>
+            <p><b>Contact: </b><br>Phone: +{{event.phone}}<br>Email: {{event.email}}</p>
+        </div>
+        <p id="desc">{{event.description}}</p><br>
+    </div>
+</div>
+{% endblock %}
